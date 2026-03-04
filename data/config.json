@@ -1,5 +1,5 @@
 {
-  "version": "ATE 6PRO v3.1.5.13",
+  "version": "ATE 6PRO v3.2",
   "okx": {
     "api_key": "",
     "api_secret": "",
@@ -1615,10 +1615,10 @@
     "decision_log_max_bytes": 52428800
   },
   "app": {
-    "name": "ATE 6PRO v3.1.5.0",
-    "version": "3.1.5.0"
+    "name": "ATE 6PRO v3.2",
+    "version": "3.2"
   },
-  "app_version": "3.1.5.13",
+  "app_version": "3.2",
   "crypto_salt": "ATE",
   "ws": {
     "public_pump_ms": 250,
@@ -1633,5 +1633,5 @@
     "dead_pause_sec": 45,
     "dead_ban_min": 30
   },
-  "build": "ATE 6PRO v3.1.4.5"
+  "build": "ATE 6PRO v3.2"
 }

@@ -1,5 +1,0 @@
-[
-  "tests/test_metrics.py::TestMetrics::test_basic",
-  "tests/test_okx_multifill_manual_path.py::test_manual_multifill_ordid_not_deduped",
-  "tests/test_signing.py::TestSigning::test_sign_okx_known"
-]
