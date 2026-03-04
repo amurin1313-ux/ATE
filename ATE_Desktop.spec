@@ -3,7 +3,7 @@
 # Все файлы остаются внутри dist\ATE_6PRO\ рядом с ATE_6PRO.exe.
 
 a = Analysis(
-    ['app\main.py'],
+    ['app/main.py'],
     pathex=['.'],
     binaries=[],
     datas=[
