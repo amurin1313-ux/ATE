@@ -1,0 +1,1637 @@
+{
+  "version": "ATE 6PRO v3.1.5.13",
+  "okx": {
+    "api_key": "",
+    "api_secret": "",
+    "passphrase": "",
+    "save_keys": false,
+    "simulated_trading": true
+  },
+  "trading": {
+    "dry_run": false,
+    "quote_ccy": "USDT",
+    "max_total_position_pct": 5,
+    "max_single_position_pct": 12,
+    "risk_per_trade_pct": 0.8,
+    "signal_cooldown_sec": 90,
+    "order_type": "market",
+    "default_order_usd": 500,
+    "order_size_mode": "fixed",
+    "order_size_pct": 5,
+    "min_cash_reserve_pct": 10,
+    "paper_equity_usd": 5000,
+    "fee_rate": 0.001,
+    "snapshots_enabled": true,
+    "auto_trade": true,
+    "warmup_sec": 60,
+    "cooldown_sec": 10,
+    "max_positions": 8,
+    "min_order_usd": 10,
+    "dust_usd_threshold": 1,
+    "check_old_orders": false,
+    "check_old_orders_hours": 5,
+    "sell_protect_ccy": [],
+    "sell_protect_baseline": {
+      "BTC": 1,
+      "ETH": 1,
+      "OKB": 100
+    },
+    "paper_trade": false,
+    "ban_after_failures": 3,
+    "ban_ttl_min": 60,
+    "winrate_min": 0.4,
+    "winrate_min_trades": 10,
+    "winrate_ban_hours": 24,
+    "max_positions_per_symbol": 1,
+    "allow_exceed_max_positions": false,
+    "micro_profit_enabled": true,
+    "micro_profit_take_net_pct": 0.0015,
+    "micro_profit_stale_sec": 240,
+    "max_daily_loss_usdt": 30,
+    "prv_watchdog_stale_sec": 60,
+    "prv_restart_if_off_sec": 120,
+    "prv_buy_freeze_sec": 25,
+    "stuck_exit_after_sec": 3600,
+    "stuck_exit_near_zero_net_pct": -0.0003,
+    "api_economy_mode": false,
+    "economy_candles_every": 60,
+    "economy_book_every": 30,
+    "economy_trades_every": 30,
+    "fetch_candles_every": 15,
+    "fetch_book_every": 2,
+    "fetch_trades_every": 2,
+    "symbols_change_warmup_sec": 60,
+    "new_symbol_warmup_sec": 60,
+    "buy_cooldown_sec": 45.0,
+    "sell_cooldown_sec": 10,
+    "buy_confirm_ticks": 3,
+    "sell_confirm_ticks": 3,
+    "metrics_loop_sec": 0.25,
+    "prep_log_every_sec": 5,
+    "prep_log_rects_min": 3,
+    "signal_ttl_sec": 3,
+    "global_buy_throttle_sec": 60,
+    "max_spread_buy_pct": 0.22,
+    "max_lag_buy_sec": 1.5,
+    "market_ref_symbol": "BTC-USDT",
+    "market_filter_enabled": true,
+    "market_block_btc_ret15": -0.8,
+    "market_block_btc_slope30": -0.25,
+    "market_danger_vol_1h": 3.0,
+    "market_block_seconds": 180,
+    "v3_atr_max_pct": 2.5,
+    "v3_ret5_min_pct": -0.08,
+    "buy_rate_window_sec": 900,
+    "buy_rate_max": 6,
+    "buy_min_gap_sec": 60,
+    "min_exit_hold_sec": 30,
+    "hard_stop_loss_pct": 1.2,
+    "sell_sweep_dust_enabled": true,
+    "sell_sweep_max_usd": 5,
+    "auto_top_enabled": true,
+    "auto_top_count": 30,
+    "auto_top_update_min": 60,
+    "dead_swap_enabled": true,
+    "dead_swap_no_price_sec": 120,
+    "dead_swap_pause_sec": 45,
+    "dead_swap_ban_min": 30,
+    "dust_threshold_usd": 1,
+    "partial_tp_enabled": true,
+    "partial_tp1_net_pct": 0.003,
+    "partial_tp1_fraction": 0.45,
+    "partial_tp2_net_pct": 0.006,
+    "partial_tp2_fraction": 0.3,
+    "partial_tp_min_remain_fraction": 0.2,
+    "neg_peak_exit_enabled": false,
+    "neg_peak_window_sec": 240,
+    "neg_peak_cur_net_pp": -0.45,
+    "no_progress_hard_exit_enabled": false,
+    "no_progress_window_sec": 600,
+    "no_progress_need_peak_pp": 0.12,
+    "hard_stop_force_enabled": true,
+    "lag_sell_safety_mode": "ignore_trailing",
+    "min_hold_for_failfast_sec": 25,
+    "min_hold_for_hard_stop_sec": 12,
+    "hard_stop_emergency_pp": -2.5,
+    "post_buy_exit_grace_sec": 12,
+    "per_symbol_thresholds": {
+      "ETH-USDT": {
+        "rsi_buy": 42.03,
+        "rsi_sell": 59.4,
+        "spread_max": 0.0005,
+        "vol_ratio_min": 0.075,
+        "atr_sl_mult": 1.414,
+        "atr_tp_mult": 2.263,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 20000,
+            "spread_pct": 20000,
+            "atr14_pct": 20000,
+            "vol_ratio": 20000
+          },
+          "atr_median": 0.1283,
+          "atr_p90": 0.2624
+        }
+      },
+      "HYPE-USDT": {
+        "rsi_buy": 41.75,
+        "rsi_sell": 60.32,
+        "spread_max": 0.021,
+        "vol_ratio_min": 0.043,
+        "atr_sl_mult": 1.249,
+        "atr_tp_mult": 1.999,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 20000,
+            "spread_pct": 20000,
+            "atr14_pct": 20000,
+            "vol_ratio": 20000
+          },
+          "atr_median": 0.162,
+          "atr_p90": 0.2595
+        }
+      },
+      "SOL-USDT": {
+        "rsi_buy": 42.47,
+        "rsi_sell": 59.77,
+        "spread_max": 0.013,
+        "vol_ratio_min": 0.077,
+        "atr_sl_mult": 1.323,
+        "atr_tp_mult": 2.117,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 20000,
+            "spread_pct": 20000,
+            "atr14_pct": 20000,
+            "vol_ratio": 20000
+          },
+          "atr_median": 0.1472,
+          "atr_p90": 0.2608
+        }
+      },
+      "UNI-USDT": {
+        "rsi_buy": 40.98,
+        "rsi_sell": 58.82,
+        "spread_max": 0.0537,
+        "vol_ratio_min": 0.008,
+        "atr_sl_mult": 1.439,
+        "atr_tp_mult": 2.302,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 20000,
+            "spread_pct": 20000,
+            "atr14_pct": 20000,
+            "vol_ratio": 20000
+          },
+          "atr_median": 0.166,
+          "atr_p90": 0.3367
+        }
+      },
+      "DOGE-USDT": {
+        "rsi_buy": 40.51,
+        "rsi_sell": 57.43,
+        "spread_max": 0.011,
+        "vol_ratio_min": 0.048,
+        "atr_sl_mult": 1.392,
+        "atr_tp_mult": 2.227,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 20000,
+            "spread_pct": 20000,
+            "atr14_pct": 20000,
+            "vol_ratio": 20000
+          },
+          "atr_median": 0.1431,
+          "atr_p90": 0.2814
+        }
+      },
+      "XRP-USDT": {
+        "rsi_buy": 40.15,
+        "rsi_sell": 58.71,
+        "spread_max": 0.0075,
+        "vol_ratio_min": 0.08,
+        "atr_sl_mult": 1.319,
+        "atr_tp_mult": 2.111,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 20000,
+            "spread_pct": 20000,
+            "atr14_pct": 20000,
+            "vol_ratio": 20000
+          },
+          "atr_median": 0.1393,
+          "atr_p90": 0.2438
+        }
+      },
+      "OKB-USDT": {
+        "rsi_buy": 42.31,
+        "rsi_sell": 59.65,
+        "spread_max": 0.0539,
+        "vol_ratio_min": 0.002,
+        "atr_sl_mult": 1.308,
+        "atr_tp_mult": 2.093,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 20000,
+            "spread_pct": 20000,
+            "atr14_pct": 20000,
+            "vol_ratio": 20000
+          },
+          "atr_median": 0.0925,
+          "atr_p90": 0.1469
+        }
+      },
+      "XAUT-USDT": {
+        "rsi_buy": 40.0,
+        "rsi_sell": 61.29,
+        "spread_max": 0.002,
+        "vol_ratio_min": 0.001,
+        "atr_sl_mult": 1.368,
+        "atr_tp_mult": 2.189,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 18496,
+            "spread_pct": 18496,
+            "atr14_pct": 18496,
+            "vol_ratio": 18496
+          },
+          "atr_median": 0.0248,
+          "atr_p90": 0.054
+        }
+      },
+      "BTC-USDT": {
+        "rsi_buy": 40.89,
+        "rsi_sell": 60.35,
+        "spread_max": 0.0002,
+        "vol_ratio_min": 0.084,
+        "atr_sl_mult": 1.391,
+        "atr_tp_mult": 2.225,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 20000,
+            "spread_pct": 20000,
+            "atr14_pct": 20000,
+            "vol_ratio": 20000
+          },
+          "atr_median": 0.1001,
+          "atr_p90": 0.1859
+        }
+      },
+      "PEPE-USDT": {
+        "rsi_buy": 40.48,
+        "rsi_sell": 56.93,
+        "spread_max": 0.0512,
+        "vol_ratio_min": 0.029,
+        "atr_sl_mult": 1.385,
+        "atr_tp_mult": 2.216,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 20000,
+            "spread_pct": 20000,
+            "atr14_pct": 20000,
+            "vol_ratio": 20000
+          },
+          "atr_median": 0.1678,
+          "atr_p90": 0.314
+        }
+      },
+      "AVAX-USDT": {
+        "rsi_buy": 39.88,
+        "rsi_sell": 59.2,
+        "spread_max": 0.0121,
+        "vol_ratio_min": 0.014,
+        "atr_sl_mult": 1.364,
+        "atr_tp_mult": 2.183,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 20000,
+            "spread_pct": 20000,
+            "atr14_pct": 20000,
+            "vol_ratio": 20000
+          },
+          "atr_median": 0.12,
+          "atr_p90": 0.223
+        }
+      },
+      "SHIB-USDT": {
+        "rsi_buy": 40.56,
+        "rsi_sell": 59.29,
+        "spread_max": 0.0484,
+        "vol_ratio_min": 0.002,
+        "atr_sl_mult": 1.408,
+        "atr_tp_mult": 2.252,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 8366,
+            "spread_pct": 8366,
+            "atr14_pct": 8366,
+            "vol_ratio": 8366
+          },
+          "atr_median": 0.107,
+          "atr_p90": 0.234
+        }
+      },
+      "DOT-USDT": {
+        "rsi_buy": 40.48,
+        "rsi_sell": 58.57,
+        "spread_max": 0.1229,
+        "vol_ratio_min": 0.05,
+        "atr_sl_mult": 1.441,
+        "atr_tp_mult": 2.306,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 20000,
+            "spread_pct": 20000,
+            "atr14_pct": 20000,
+            "vol_ratio": 20000
+          },
+          "atr_median": 0.3064,
+          "atr_p90": 0.5501
+        }
+      },
+      "SUI-USDT": {
+        "rsi_buy": 41.1,
+        "rsi_sell": 59.68,
+        "spread_max": 0.0231,
+        "vol_ratio_min": 0.04,
+        "atr_sl_mult": 1.373,
+        "atr_tp_mult": 2.197,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 20000,
+            "spread_pct": 20000,
+            "atr14_pct": 20000,
+            "vol_ratio": 20000
+          },
+          "atr_median": 0.1702,
+          "atr_p90": 0.293
+        }
+      },
+      "OP-USDT": {
+        "rsi_buy": 40.0,
+        "rsi_sell": 60.0,
+        "spread_max": 0.0862,
+        "vol_ratio_min": 0.012,
+        "atr_sl_mult": 1.392,
+        "atr_tp_mult": 2.228,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 20000,
+            "spread_pct": 20000,
+            "atr14_pct": 20000,
+            "vol_ratio": 20000
+          },
+          "atr_median": 0.1612,
+          "atr_p90": 0.2857
+        }
+      },
+      "BNB-USDT": {
+        "rsi_buy": 41.03,
+        "rsi_sell": 59.26,
+        "spread_max": 0.0172,
+        "vol_ratio_min": 0.021,
+        "atr_sl_mult": 1.379,
+        "atr_tp_mult": 2.207,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 20000,
+            "spread_pct": 20000,
+            "atr14_pct": 20000,
+            "vol_ratio": 20000
+          },
+          "atr_median": 0.0845,
+          "atr_p90": 0.1511
+        }
+      },
+      "FIL-USDT": {
+        "rsi_buy": 40.0,
+        "rsi_sell": 57.26,
+        "spread_max": 0.0392,
+        "vol_ratio_min": 0.053,
+        "atr_sl_mult": 1.644,
+        "atr_tp_mult": 2.63,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 20000,
+            "spread_pct": 20000,
+            "atr14_pct": 20000,
+            "vol_ratio": 20000
+          },
+          "atr_median": 0.1751,
+          "atr_p90": 0.4221
+        }
+      },
+      "ADA-USDT": {
+        "rsi_buy": 40.0,
+        "rsi_sell": 59.09,
+        "spread_max": 0.0702,
+        "vol_ratio_min": 0.015,
+        "atr_sl_mult": 1.484,
+        "atr_tp_mult": 2.375,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 20000,
+            "spread_pct": 20000,
+            "atr14_pct": 20000,
+            "vol_ratio": 20000
+          },
+          "atr_median": 0.1408,
+          "atr_p90": 0.2987
+        }
+      },
+      "LTC-USDT": {
+        "rsi_buy": 41.67,
+        "rsi_sell": 60.0,
+        "spread_max": 0.0363,
+        "vol_ratio_min": 0.024,
+        "atr_sl_mult": 1.34,
+        "atr_tp_mult": 2.144,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 20000,
+            "spread_pct": 20000,
+            "atr14_pct": 20000,
+            "vol_ratio": 20000
+          },
+          "atr_median": 0.1082,
+          "atr_p90": 0.2006
+        }
+      },
+      "LAT-USDT": {
+        "rsi_buy": 43.75,
+        "rsi_sell": 61.54,
+        "spread_max": 0.1404,
+        "vol_ratio_min": 0.057,
+        "atr_sl_mult": 1.505,
+        "atr_tp_mult": 2.408,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 7408,
+            "spread_pct": 7408,
+            "atr14_pct": 7408,
+            "vol_ratio": 7408
+          },
+          "atr_median": 0.128,
+          "atr_p90": 0.3567
+        }
+      },
+      "LUNA-USDT": {
+        "rsi_buy": 36.36,
+        "rsi_sell": 60.0,
+        "spread_max": 0.066,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.558,
+        "atr_tp_mult": 2.493,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 14210,
+            "spread_pct": 14210,
+            "atr14_pct": 14210,
+            "vol_ratio": 14210
+          },
+          "atr_median": 0.0691,
+          "atr_p90": 0.1885
+        }
+      },
+      "LPT-USDT": {
+        "rsi_buy": 33.33,
+        "rsi_sell": 81.25,
+        "spread_max": 0.1779,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.662,
+        "atr_tp_mult": 2.66,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 8882,
+            "spread_pct": 8882,
+            "atr14_pct": 8882,
+            "vol_ratio": 8621
+          },
+          "atr_median": 0.0382,
+          "atr_p90": 0.1046
+        }
+      },
+      "WIF-USDT": {
+        "rsi_buy": 38.89,
+        "rsi_sell": 57.69,
+        "spread_max": 0.0953,
+        "vol_ratio_min": 0.001,
+        "atr_sl_mult": 1.457,
+        "atr_tp_mult": 2.331,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 20000,
+            "spread_pct": 20000,
+            "atr14_pct": 20000,
+            "vol_ratio": 20000
+          },
+          "atr_median": 0.1675,
+          "atr_p90": 0.3078
+        }
+      },
+      "MET-USDT": {
+        "rsi_buy": 34.78,
+        "rsi_sell": 69.23,
+        "spread_max": 0.1678,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.537,
+        "atr_tp_mult": 2.459,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 13434,
+            "spread_pct": 13434,
+            "atr14_pct": 13434,
+            "vol_ratio": 13434
+          },
+          "atr_median": 0.0577,
+          "atr_p90": 0.1592
+        }
+      },
+      "YGG-USDT": {
+        "rsi_buy": 38.06,
+        "rsi_sell": 63.89,
+        "spread_max": 0.1453,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.516,
+        "atr_tp_mult": 2.426,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 10287,
+            "spread_pct": 10287,
+            "atr14_pct": 10287,
+            "vol_ratio": 10287
+          },
+          "atr_median": 0.0797,
+          "atr_p90": 0.1915
+        }
+      },
+      "ZK-USDT": {
+        "rsi_buy": 37.5,
+        "rsi_sell": 58.06,
+        "spread_max": 0.1064,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.619,
+        "atr_tp_mult": 2.59,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 2400,
+            "spread_pct": 2400,
+            "atr14_pct": 2400,
+            "vol_ratio": 2400
+          },
+          "atr_median": 0.0681,
+          "atr_p90": 0.2147
+        }
+      },
+      "XLM-USDT": {
+        "rsi_buy": 42.16,
+        "rsi_sell": 61.15,
+        "spread_max": 0.013,
+        "vol_ratio_min": 0.003,
+        "atr_sl_mult": 1.398,
+        "atr_tp_mult": 2.238,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 20000,
+            "spread_pct": 20000,
+            "atr14_pct": 20000,
+            "vol_ratio": 20000
+          },
+          "atr_median": 0.1117,
+          "atr_p90": 0.204
+        }
+      },
+      "HBAR-USDT": {
+        "rsi_buy": 36.36,
+        "rsi_sell": 60.5,
+        "spread_max": 0.0195,
+        "vol_ratio_min": 0.002,
+        "atr_sl_mult": 1.37,
+        "atr_tp_mult": 2.192,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 9471,
+            "spread_pct": 9471,
+            "atr14_pct": 9471,
+            "vol_ratio": 9471
+          },
+          "atr_median": 0.107,
+          "atr_p90": 0.1719
+        }
+      },
+      "AAVE-USDT": {
+        "rsi_buy": 39.58,
+        "rsi_sell": 57.89,
+        "spread_max": 0.0089,
+        "vol_ratio_min": 0.069,
+        "atr_sl_mult": 1.454,
+        "atr_tp_mult": 2.326,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 20000,
+            "spread_pct": 20000,
+            "atr14_pct": 20000,
+            "vol_ratio": 20000
+          },
+          "atr_median": 0.1343,
+          "atr_p90": 0.2571
+        }
+      },
+      "TRX-USDT": {
+        "rsi_buy": 46.25,
+        "rsi_sell": 65.91,
+        "spread_max": 0.0036,
+        "vol_ratio_min": 0.018,
+        "atr_sl_mult": 1.444,
+        "atr_tp_mult": 2.311,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 13172,
+            "spread_pct": 13172,
+            "atr14_pct": 13172,
+            "vol_ratio": 13172
+          },
+          "atr_median": 0.02,
+          "atr_p90": 0.0369
+        }
+      },
+      "ETC-USDT": {
+        "rsi_buy": 38.64,
+        "rsi_sell": 61.7,
+        "spread_max": 0.0438,
+        "vol_ratio_min": 0.001,
+        "atr_sl_mult": 1.368,
+        "atr_tp_mult": 2.189,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 14966,
+            "spread_pct": 14966,
+            "atr14_pct": 14966,
+            "vol_ratio": 14966
+          },
+          "atr_median": 0.1164,
+          "atr_p90": 0.2208
+        }
+      },
+      "ICP-USDT": {
+        "rsi_buy": 38.1,
+        "rsi_sell": 58.82,
+        "spread_max": 0.0917,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.325,
+        "atr_tp_mult": 2.12,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 18702,
+            "spread_pct": 18702,
+            "atr14_pct": 18702,
+            "vol_ratio": 18702
+          },
+          "atr_median": 0.1687,
+          "atr_p90": 0.3154
+        }
+      },
+      "CFX-USDT": {
+        "rsi_buy": 37.74,
+        "rsi_sell": 48.78,
+        "spread_max": 0.0786,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.043,
+        "atr_tp_mult": 1.669,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 310,
+            "spread_pct": 310,
+            "atr14_pct": 310,
+            "vol_ratio": 310
+          },
+          "atr_median": 0.0692,
+          "atr_p90": 0.0785
+        }
+      },
+      "WLD-USDT": {
+        "rsi_buy": 41.38,
+        "rsi_sell": 58.93,
+        "spread_max": 0.0528,
+        "vol_ratio_min": 0.001,
+        "atr_sl_mult": 1.378,
+        "atr_tp_mult": 2.205,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 20000,
+            "spread_pct": 20000,
+            "atr14_pct": 20000,
+            "vol_ratio": 20000
+          },
+          "atr_median": 0.1384,
+          "atr_p90": 0.2733
+        }
+      },
+      "LINK-USDT": {
+        "rsi_buy": 41.67,
+        "rsi_sell": 59.0,
+        "spread_max": 0.0122,
+        "vol_ratio_min": 0.027,
+        "atr_sl_mult": 1.362,
+        "atr_tp_mult": 2.179,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 20000,
+            "spread_pct": 20000,
+            "atr14_pct": 20000,
+            "vol_ratio": 20000
+          },
+          "atr_median": 0.1285,
+          "atr_p90": 0.2538
+        }
+      },
+      "BCH-USDT": {
+        "rsi_buy": 39.29,
+        "rsi_sell": 57.78,
+        "spread_max": 0.0412,
+        "vol_ratio_min": 0.002,
+        "atr_sl_mult": 1.372,
+        "atr_tp_mult": 2.195,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 20000,
+            "spread_pct": 20000,
+            "atr14_pct": 20000,
+            "vol_ratio": 20000
+          },
+          "atr_median": 0.1065,
+          "atr_p90": 0.1897
+        }
+      },
+      "INJ-USDT": {
+        "rsi_buy": 38.71,
+        "rsi_sell": 60.87,
+        "spread_max": 0.0932,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.665,
+        "atr_tp_mult": 2.664,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 11578,
+            "spread_pct": 11578,
+            "atr14_pct": 11578,
+            "vol_ratio": 11578
+          },
+          "atr_median": 0.0825,
+          "atr_p90": 0.2298
+        }
+      },
+      "ARB-USDT": {
+        "rsi_buy": 41.38,
+        "rsi_sell": 58.86,
+        "spread_max": 0.1083,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.415,
+        "atr_tp_mult": 2.264,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 20000,
+            "spread_pct": 20000,
+            "atr14_pct": 20000,
+            "vol_ratio": 20000
+          },
+          "atr_median": 0.1601,
+          "atr_p90": 0.3269
+        }
+      },
+      "ETHFI-USDT": {
+        "rsi_buy": 41.56,
+        "rsi_sell": 59.22,
+        "spread_max": 0.0596,
+        "vol_ratio_min": 0.037,
+        "atr_sl_mult": 1.447,
+        "atr_tp_mult": 2.315,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 17825,
+            "spread_pct": 17825,
+            "atr14_pct": 17825,
+            "vol_ratio": 17825
+          },
+          "atr_median": 0.1972,
+          "atr_p90": 0.4574
+        }
+      },
+      "ATOM-USDT": {
+        "rsi_buy": 41.67,
+        "rsi_sell": 59.09,
+        "spread_max": 0.1092,
+        "vol_ratio_min": 0.031,
+        "atr_sl_mult": 1.294,
+        "atr_tp_mult": 2.071,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 3280,
+            "spread_pct": 3280,
+            "atr14_pct": 3280,
+            "vol_ratio": 3280
+          },
+          "atr_median": 0.141,
+          "atr_p90": 0.2404
+        }
+      },
+      "NEAR-USDT": {
+        "rsi_buy": 40.0,
+        "rsi_sell": 60.61,
+        "spread_max": 0.0917,
+        "vol_ratio_min": 0.036,
+        "atr_sl_mult": 1.338,
+        "atr_tp_mult": 2.141,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 15564,
+            "spread_pct": 15564,
+            "atr14_pct": 15564,
+            "vol_ratio": 15564
+          },
+          "atr_median": 0.1959,
+          "atr_p90": 0.3471
+        }
+      },
+      "CRV-USDT": {
+        "rsi_buy": 38.1,
+        "rsi_sell": 60.0,
+        "spread_max": 0.0798,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.398,
+        "atr_tp_mult": 2.237,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 16141,
+            "spread_pct": 16141,
+            "atr14_pct": 16141,
+            "vol_ratio": 16141
+          },
+          "atr_median": 0.1127,
+          "atr_p90": 0.2179
+        }
+      },
+      "JUP-USDT": {
+        "rsi_buy": 40.62,
+        "rsi_sell": 61.58,
+        "spread_max": 0.128,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.935,
+        "atr_tp_mult": 3.096,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 2056,
+            "spread_pct": 2056,
+            "atr14_pct": 2056,
+            "vol_ratio": 2056
+          },
+          "atr_median": 0.0895,
+          "atr_p90": 0.211
+        }
+      },
+      "RAY-USDT": {
+        "rsi_buy": 42.22,
+        "rsi_sell": 72.22,
+        "spread_max": 0.1283,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.294,
+        "atr_tp_mult": 2.07,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 1546,
+            "spread_pct": 1546,
+            "atr14_pct": 1546,
+            "vol_ratio": 1546
+          },
+          "atr_median": 0.0612,
+          "atr_p90": 0.1392
+        }
+      },
+      "FLOW-USDT": {
+        "rsi_buy": 53.85,
+        "rsi_sell": 74.3,
+        "spread_max": 0.1441,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.762,
+        "atr_tp_mult": 2.819,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 605,
+            "spread_pct": 605,
+            "atr14_pct": 605,
+            "vol_ratio": 605
+          },
+          "atr_median": 0.084,
+          "atr_p90": 0.5258
+        }
+      },
+      "PNUT-USDT": {
+        "rsi_buy": 40.0,
+        "rsi_sell": 68.42,
+        "spread_max": 0.107,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.564,
+        "atr_tp_mult": 2.502,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 2092,
+            "spread_pct": 2092,
+            "atr14_pct": 2092,
+            "vol_ratio": 2092
+          },
+          "atr_median": 0.0874,
+          "atr_p90": 0.2085
+        }
+      },
+      "LRC-USDT": {
+        "rsi_buy": 14.29,
+        "rsi_sell": 86.36,
+        "spread_max": 0.1779,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.606,
+        "atr_tp_mult": 2.57,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 1151,
+            "spread_pct": 1151,
+            "atr14_pct": 1151,
+            "vol_ratio": 1144
+          },
+          "atr_median": 0.0316,
+          "atr_p90": 0.0927
+        }
+      },
+      "ETHW-USDT": {
+        "rsi_buy": 27.27,
+        "rsi_sell": 68.18,
+        "spread_max": 0.2511,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.402,
+        "atr_tp_mult": 2.243,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 1089,
+            "spread_pct": 1089,
+            "atr14_pct": 1089,
+            "vol_ratio": 1089
+          },
+          "atr_median": 0.0558,
+          "atr_p90": 0.2548
+        }
+      },
+      "ORBS-USDT": {
+        "rsi_buy": 40.08,
+        "rsi_sell": 61.72,
+        "spread_max": 0.5891,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.334,
+        "atr_tp_mult": 2.134,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 2535,
+            "spread_pct": 2535,
+            "atr14_pct": 2535,
+            "vol_ratio": 2535
+          },
+          "atr_median": 0.1591,
+          "atr_p90": 0.2487
+        }
+      },
+      "MASK-USDT": {
+        "rsi_buy": 48.72,
+        "rsi_sell": 66.67,
+        "spread_max": 0.0691,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.771,
+        "atr_tp_mult": 2.833,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 2474,
+            "spread_pct": 2474,
+            "atr14_pct": 2474,
+            "vol_ratio": 2474
+          },
+          "atr_median": 0.093,
+          "atr_p90": 0.1928
+        }
+      },
+      "LDO-USDT": {
+        "rsi_buy": 47.59,
+        "rsi_sell": 64.41,
+        "spread_max": 0.0943,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.756,
+        "atr_tp_mult": 2.809,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 3079,
+            "spread_pct": 3079,
+            "atr14_pct": 3079,
+            "vol_ratio": 3079
+          },
+          "atr_median": 0.1022,
+          "atr_p90": 0.2532
+        }
+      },
+      "W-USDT": {
+        "rsi_buy": 46.88,
+        "rsi_sell": 62.5,
+        "spread_max": 0.1083,
+        "vol_ratio_min": 0.02,
+        "atr_sl_mult": 1.44,
+        "atr_tp_mult": 2.304,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 3505,
+            "spread_pct": 3505,
+            "atr14_pct": 3505,
+            "vol_ratio": 3505
+          },
+          "atr_median": 0.1734,
+          "atr_p90": 0.3004
+        }
+      },
+      "FLOKI-USDT": {
+        "rsi_buy": 41.38,
+        "rsi_sell": 62.5,
+        "spread_max": 0.0683,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.667,
+        "atr_tp_mult": 2.667,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 3392,
+            "spread_pct": 3392,
+            "atr14_pct": 3392,
+            "vol_ratio": 3392
+          },
+          "atr_median": 0.1069,
+          "atr_p90": 0.2144
+        }
+      },
+      "FET-USDT": {
+        "rsi_buy": 45.83,
+        "rsi_sell": 63.64,
+        "spread_max": 0.1319,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.8,
+        "atr_tp_mult": 2.88,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 1853,
+            "spread_pct": 1853,
+            "atr14_pct": 1853,
+            "vol_ratio": 1853
+          },
+          "atr_median": 0.0645,
+          "atr_p90": 0.2354
+        }
+      },
+      "ALGO-USDT": {
+        "rsi_buy": 33.33,
+        "rsi_sell": 66.67,
+        "spread_max": 0.1201,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.511,
+        "atr_tp_mult": 2.417,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 1858,
+            "spread_pct": 1858,
+            "atr14_pct": 1858,
+            "vol_ratio": 1858
+          },
+          "atr_median": 0.0397,
+          "atr_p90": 0.103
+        }
+      },
+      "COMP-USDT": {
+        "rsi_buy": 36.36,
+        "rsi_sell": 63.64,
+        "spread_max": 0.1155,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.955,
+        "atr_tp_mult": 3.128,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 1789,
+            "spread_pct": 1789,
+            "atr14_pct": 1789,
+            "vol_ratio": 1789
+          },
+          "atr_median": 0.0656,
+          "atr_p90": 0.1855
+        }
+      },
+      "THETA-USDT": {
+        "rsi_buy": 46.15,
+        "rsi_sell": 66.67,
+        "spread_max": 0.0549,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.185,
+        "atr_tp_mult": 1.896,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 1725,
+            "spread_pct": 1725,
+            "atr14_pct": 1725,
+            "vol_ratio": 1725
+          },
+          "atr_median": 0.0583,
+          "atr_p90": 0.1639
+        }
+      },
+      "TURBO-USDT": {
+        "rsi_buy": 34.21,
+        "rsi_sell": 68.12,
+        "spread_max": 0.1927,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.472,
+        "atr_tp_mult": 2.355,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 938,
+            "spread_pct": 938,
+            "atr14_pct": 938,
+            "vol_ratio": 938
+          },
+          "atr_median": 0.1295,
+          "atr_p90": 0.2056
+        }
+      },
+      "MEME-USDT": {
+        "rsi_buy": 47.37,
+        "rsi_sell": 67.24,
+        "spread_max": 0.14,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.716,
+        "atr_tp_mult": 2.745,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 1535,
+            "spread_pct": 1535,
+            "atr14_pct": 1535,
+            "vol_ratio": 1535
+          },
+          "atr_median": 0.0568,
+          "atr_p90": 0.1735
+        }
+      },
+      "SAND-USDT": {
+        "rsi_buy": 33.33,
+        "rsi_sell": 55.56,
+        "spread_max": 0.2334,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.303,
+        "atr_tp_mult": 2.085,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 4027,
+            "spread_pct": 4027,
+            "atr14_pct": 4027,
+            "vol_ratio": 4027
+          },
+          "atr_median": 0.1488,
+          "atr_p90": 0.2463
+        }
+      },
+      "SNT-USDT": {
+        "rsi_buy": 33.33,
+        "rsi_sell": 100.0,
+        "spread_max": 0.199,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 2.5,
+        "atr_tp_mult": 4.0,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 1450,
+            "spread_pct": 1450,
+            "atr14_pct": 1450,
+            "vol_ratio": 1427
+          },
+          "atr_median": 0.0212,
+          "atr_p90": 0.0656
+        }
+      },
+      "CELO-USDT": {
+        "rsi_buy": 54.55,
+        "rsi_sell": 100.0,
+        "spread_max": 0.2516,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.398,
+        "atr_tp_mult": 2.237,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 1623,
+            "spread_pct": 1623,
+            "atr14_pct": 1623,
+            "vol_ratio": 1623
+          },
+          "atr_median": 0.0893,
+          "atr_p90": 0.1777
+        }
+      },
+      "LQTY-USDT": {
+        "rsi_buy": 56.1,
+        "rsi_sell": 70.59,
+        "spread_max": 0.1131,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.278,
+        "atr_tp_mult": 2.045,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 658,
+            "spread_pct": 658,
+            "atr14_pct": 658,
+            "vol_ratio": 658
+          },
+          "atr_median": 0.1369,
+          "atr_p90": 0.1962
+        }
+      },
+      "AEVO-USDT": {
+        "rsi_buy": 42.86,
+        "rsi_sell": 77.27,
+        "spread_max": 0.1633,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.321,
+        "atr_tp_mult": 2.114,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 1536,
+            "spread_pct": 1536,
+            "atr14_pct": 1536,
+            "vol_ratio": 1536
+          },
+          "atr_median": 0.0796,
+          "atr_p90": 0.1692
+        }
+      },
+      "YFI-USDT": {
+        "rsi_buy": 41.94,
+        "rsi_sell": 100.0,
+        "spread_max": 0.1521,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.557,
+        "atr_tp_mult": 2.492,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 1330,
+            "spread_pct": 1330,
+            "atr14_pct": 1330,
+            "vol_ratio": 1168
+          },
+          "atr_median": 0.0514,
+          "atr_p90": 0.0979
+        }
+      },
+      "LSK-USDT": {
+        "rsi_buy": 50.0,
+        "rsi_sell": 100.0,
+        "spread_max": 0.6121,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.709,
+        "atr_tp_mult": 2.735,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 1367,
+            "spread_pct": 1367,
+            "atr14_pct": 1367,
+            "vol_ratio": 1223
+          },
+          "atr_median": 0.0546,
+          "atr_p90": 0.1203
+        }
+      },
+      "SUSHI-USDT": {
+        "rsi_buy": 20.37,
+        "rsi_sell": 66.67,
+        "spread_max": 0.1399,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.891,
+        "atr_tp_mult": 3.026,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 8428,
+            "spread_pct": 8428,
+            "atr14_pct": 8428,
+            "vol_ratio": 8428
+          },
+          "atr_median": 0.0736,
+          "atr_p90": 0.2358
+        }
+      },
+      "1INCH-USDT": {
+        "rsi_buy": 50.0,
+        "rsi_sell": 100.0,
+        "spread_max": 0.2075,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 2.5,
+        "atr_tp_mult": 4.0,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 1646,
+            "spread_pct": 1646,
+            "atr14_pct": 1646,
+            "vol_ratio": 1646
+          },
+          "atr_median": 0.0371,
+          "atr_p90": 0.133
+        }
+      },
+      "ENJ-USDT": {
+        "rsi_buy": 47.83,
+        "rsi_sell": 86.12,
+        "spread_max": 0.1523,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.543,
+        "atr_tp_mult": 2.469,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 1378,
+            "spread_pct": 1378,
+            "atr14_pct": 1378,
+            "vol_ratio": 1203
+          },
+          "atr_median": 0.0388,
+          "atr_p90": 0.1042
+        }
+      },
+      "IOST-USDT": {
+        "rsi_buy": 37.5,
+        "rsi_sell": 100.0,
+        "spread_max": 0.1761,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.336,
+        "atr_tp_mult": 2.137,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 1418,
+            "spread_pct": 1418,
+            "atr14_pct": 1418,
+            "vol_ratio": 1358
+          },
+          "atr_median": 0.0352,
+          "atr_p90": 0.0882
+        }
+      },
+      "DORA-USDT": {
+        "rsi_buy": 37.19,
+        "rsi_sell": 100.0,
+        "spread_max": 0.7026,
+        "vol_ratio_min": 0.0,
+        "atr_sl_mult": 1.289,
+        "atr_tp_mult": 2.062,
+        "_stats": {
+          "n_samples": {
+            "rsi14": 1819,
+            "spread_pct": 1819,
+            "atr14_pct": 1819,
+            "vol_ratio": 1712
+          },
+          "atr_median": 0.0452,
+          "atr_p90": 0.371
+        }
+      }
+    },
+    "v3_buy_score_min": 0.72,
+    "v3_sell_score_min": 0.65,
+    "exceed_max_positions_score": 0.92,
+    "min_hold_seconds": 45,
+    "v3_rsi_buy_max": 72.0,
+    "timeout_exit_enabled": false,
+    "trade_timeout_sec": 0,
+    "v3_buy_ratio_min": 0.54,
+    "fetch_candles_5m_every": 60,
+    "v3_rsi_buy_trend_max": 86,
+    "v3_rsi_extreme_block": 92,
+    "startup_stagger_max_sec": 8.0,
+    "warmup_candles_1m": 120,
+    "warmup_candles_5m": 120,
+    "v3_liq_floor": 0.15,
+    "v3_buy_ratio_floor": 0.45,
+    "fee_pct_est": 0.001,
+    "v3_rsi_mr_max": 58,
+    "tp_atr_mult": 1.2,
+    "anti_idle_after_sec": 900,
+    "trail_dd_pct": 0.35,
+    "v3_rsi_sell": 74,
+    "reentry_cooldown_sec": 180,
+    "profit_lock_enabled": true,
+    "profit_lock_arm_pp": 0.25,
+    "profit_lock_trail_pp": 0.18,
+    "profit_lock_min_keep_pp": 0.05,
+    "no_progress_exit_enabled": true,
+    "no_progress_hold_sec": 720,
+    "no_progress_min_peak_pp": 0.12,
+    "no_progress_band_lo_pp": -0.08,
+    "no_progress_band_hi_pp": 0.08
+  },
+  "symbols": {
+    "list": [
+      "BTC-USDT",
+      "SOL-USDT",
+      "DOGE-USDT",
+      "XRP-USDT",
+      "XAUT-USDT",
+      "HYPE-USDT",
+      "PEPE-USDT",
+      "BNB-USDT",
+      "UNI-USDT",
+      "AUCTION-USDT",
+      "AAVE-USDT",
+      "DOT-USDT",
+      "SUI-USDT",
+      "FIL-USDT",
+      "LTC-USDT",
+      "BCH-USDT",
+      "ADA-USDT",
+      "MAGIC-USDT",
+      "SHIB-USDT",
+      "LINK-USDT",
+      "TRX-USDT",
+      "WLD-USDT",
+      "CFX-USDT",
+      "OP-USDT",
+      "ICP-USDT",
+      "ETC-USDT",
+      "HBAR-USDT",
+      "ARB-USDT",
+      "SAND-USDT",
+      "WIF-USDT",
+      "FLOW-USDT",
+      "NEAR-USDT",
+      "CRV-USDT",
+      "LUNA-USDT",
+      "ETHFI-USDT",
+      "LQTY-USDT",
+      "ZK-USDT",
+      "LAT-USDT",
+      "YGG-USDT",
+      "XLM-USDT",
+      "TURBO-USDT",
+      "JUP-USDT",
+      "PNUT-USDT",
+      "ORBS-USDT",
+      "YFI-USDT",
+      "ATOM-USDT",
+      "MEME-USDT",
+      "OM-USDT",
+      "FLOKI-USDT",
+      "AEVO-USDT",
+      "LDO-USDT",
+      "ETHW-USDT",
+      "FET-USDT",
+      "1INCH-USDT",
+      "SUSHI-USDT",
+      "LPT-USDT",
+      "W-USDT",
+      "INJ-USDT",
+      "MASK-USDT",
+      "RAY-USDT"
+    ],
+    "auto_top": true,
+    "auto_top_refresh_min": 60,
+    "auto_top_count": 30,
+    "symbol_blacklist": [
+      "DAI-USDT",
+      "EUR-USDT",
+      "FDUSD-USDT",
+      "GBP-USDT",
+      "IP-USDT",
+      "OKB-USDT",
+      "PENGU-USDT",
+      "PYUSD-USDT",
+      "TUSD-USDT",
+      "USDC-USDT",
+      "USDE-USDT",
+      "USDG-USDT",
+      "USDT-USDC",
+      "XPL-USDT",
+      "ZRO-USDT"
+    ],
+    "auto_top_mode": "core",
+    "core_symbols": [
+      "BTC-USDT",
+      "ETH-USDT",
+      "SOL-USDT",
+      "BNB-USDT",
+      "XRP-USDT",
+      "DOGE-USDT",
+      "ADA-USDT",
+      "TRX-USDT",
+      "TON-USDT",
+      "AVAX-USDT",
+      "LINK-USDT",
+      "DOT-USDT",
+      "MATIC-USDT",
+      "ATOM-USDT",
+      "LTC-USDT",
+      "BCH-USDT",
+      "ETC-USDT",
+      "XLM-USDT",
+      "UNI-USDT",
+      "FIL-USDT",
+      "APT-USDT",
+      "ARB-USDT",
+      "OP-USDT",
+      "INJ-USDT",
+      "NEAR-USDT",
+      "ICP-USDT",
+      "IMX-USDT",
+      "AAVE-USDT",
+      "SUI-USDT",
+      "SEI-USDT",
+      "PEPE-USDT",
+      "SHIB-USDT",
+      "WIF-USDT",
+      "BONK-USDT",
+      "JUP-USDT",
+      "RUNE-USDT",
+      "HBAR-USDT",
+      "VET-USDT",
+      "ALGO-USDT",
+      "EGLD-USDT",
+      "RNDR-USDT",
+      "TIA-USDT",
+      "STX-USDT",
+      "KAS-USDT",
+      "FET-USDT",
+      "GRT-USDT",
+      "SAND-USDT",
+      "MANA-USDT",
+      "FLOW-USDT",
+      "THETA-USDT",
+      "FTM-USDT",
+      "NEO-USDT",
+      "KAVA-USDT",
+      "ZEC-USDT",
+      "XMR-USDT",
+      "EOS-USDT",
+      "IOTA-USDT",
+      "XTZ-USDT",
+      "CRV-USDT",
+      "DYDX-USDT",
+      "GMX-USDT",
+      "ENJ-USDT",
+      "CHZ-USDT",
+      "1INCH-USDT",
+      "COMP-USDT",
+      "SNX-USDT",
+      "BAT-USDT",
+      "ZIL-USDT",
+      "ONT-USDT",
+      "WLD-USDT",
+      "PYTH-USDT",
+      "JTO-USDT",
+      "ENA-USDT",
+      "ONDO-USDT",
+      "TAO-USDT",
+      "ARKM-USDT",
+      "FLOKI-USDT",
+      "GALA-USDT",
+      "LDO-USDT",
+      "AR-USDT"
+    ],
+    "auto_dead_swap": true,
+    "dead_no_tick_sec": 120,
+    "dead_swap_cooldown_sec": 45,
+    "dead_ban_min": 30,
+    "lag_swap_sec": 12,
+    "lag_swap_hits": 6,
+    "lag_swap_window_sec": 45,
+    "auto_top_min_range_pct": 0.25
+  },
+  "strategy": {
+    "name": "StrategyV3",
+    "params": {
+      "note": "StrategyV3 uses per-symbol thresholds in trading.per_symbol_thresholds"
+    }
+  },
+  "logging": {
+    "decision_log_enabled": true,
+    "decision_log_mode": "signals",
+    "decision_log_tick_sec": 15,
+    "decision_log_max_bytes": 52428800
+  },
+  "app": {
+    "name": "ATE 6PRO v3.1.5.0",
+    "version": "3.1.5.0"
+  },
+  "app_version": "3.1.5.13",
+  "crypto_salt": "ATE",
+  "ws": {
+    "public_pump_ms": 250,
+    "private_enabled": true
+  },
+  "monitor": {
+    "auto_top": true,
+    "auto_top_count": 30,
+    "auto_top_refresh_min": 60,
+    "dead_symbols_autoswap": true,
+    "dead_no_price_sec": 120,
+    "dead_pause_sec": 45,
+    "dead_ban_min": 30
+  },
+  "build": "ATE 6PRO v3.1.4.5"
+}
