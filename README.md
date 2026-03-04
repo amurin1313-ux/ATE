@@ -7,9 +7,9 @@
 - В решении используется **Score** (0..1) — сила совпадения правил. Это не «вероятность».
 
 ## Быстрый старт
-1) Установи зависимости: `install_deps.bat`
-2) Запусти приложение: `run_app.bat`
-3) Тесты: `run_tests.bat`
+1) Собери EXE: `build_exe.bat`
+2) Запусти: `dist\ATE_6PRO\ATE_6PRO.exe`
+3) Для проверок из исходников: `pytest -q`
 
 ## Настройка порогов по каждой монете
 См. `tools/generate_thresholds_from_dist.py` и документ `docs/STRATEGY_V3_DESCRIPTION_RU.md`.
