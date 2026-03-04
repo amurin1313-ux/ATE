@@ -6,10 +6,10 @@
 APP_NAME = "ATE 6PRO"
 STRATEGY_VERSION = "V3"
 
-APP_VERSION = "3.1.5.13"
+APP_VERSION = "3.2"
 
 # Внутренний идентификатор сборки (может использоваться в логах/диагностике, но НЕ в заголовке окна)
-APP_BUILD = "ATE 6PRO v3.1.5.11"
+APP_BUILD = "ATE 6PRO v3.2"
 
 # Заголовок для UI/логов (ожидается импортом в engine.decision_logger)
 APP_TITLE = f"ATE 6PRO v{APP_VERSION}"

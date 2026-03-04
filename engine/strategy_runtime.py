@@ -21,10 +21,10 @@ class SymbolStrategyInstance:
     def __init__(self, strategy_obj, strategy_params: Dict[str, Any] | None = None):
         self.strategy = strategy_obj
         self.params = strategy_params or {}
-        # Strategy V5 already holds internal state; per-symbol instance = isolated channel.
+        # StrategyV3 хранит внутреннее состояние по символу; отдельный инстанс = изолированный канал.
 
     def decide(self, features: Dict[str, Any], position: Dict[str, Any], portfolio_state: Dict[str, Any], cfg: Dict[str, Any] | None = None, **kwargs) -> Dict[str, Any]:
-        # StrategyV5 принимает (features, position, portfolio_state)
+        # StrategyV3 принимает (features, position, portfolio_state)
         # В проекте используется только StrategyV3. Старые стратегии (6PRO и т.п.) удалены.
         try:
             params = cfg if isinstance(cfg, dict) else self.params
