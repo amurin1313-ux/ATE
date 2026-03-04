@@ -1,6 +1,7 @@
 import os, json, base64
 from dataclasses import dataclass
 from typing import Any, Dict
+from engine.version import APP_TITLE, APP_VERSION
 
 def _xor(data: bytes, key: bytes) -> bytes:
     if not key:
@@ -31,10 +32,21 @@ class ConfigManager:
 
     def load(self) -> Dict[str, Any]:
         if os.path.exists(self.path):
-            with open(self.path, "r", encoding="utf-8") as f:
-                self.data = json.load(f)
+            try:
+                with open(self.path, "r", encoding="utf-8") as f:
+                    self.data = json.load(f)
+            except (json.JSONDecodeError, OSError):
+                # Повреждённый/частично записанный config не должен ломать запуск UI.
+                self.data = {}
         else:
             self.data = {}
+
+        # Нормализуем версии в конфиге в едином формате.
+        self.data["version"] = APP_TITLE
+        app_meta = self.data.setdefault("app", {})
+        app_meta["name"] = APP_TITLE
+        app_meta["version"] = APP_VERSION
+        self.data["app_version"] = APP_VERSION
 
         # Дополнительный стабильный слой конфигурации:
         # per_symbol_thresholds.json хранится рядом с config.json и переживает пересборку EXE.

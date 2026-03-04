@@ -1,6 +1,8 @@
-\
 @echo off
 setlocal
 cd /d %~dp0
-python -m unittest discover -s tests -p "test_*.py"
-pause
+if exist ".venv\Scripts\python.exe" (
+  .venv\Scripts\python.exe -m pytest -q
+) else (
+  python -m pytest -q
+)

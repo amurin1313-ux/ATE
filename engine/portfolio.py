@@ -130,7 +130,9 @@ class Trade:
         # фактическая BUY fee в quote (если была)
         buy_fee_quote = 0.0
         if _fee_mode_is_quote(self.buy_fee_mode, self.buy_fee_ccy):
-            buy_fee_quote = float(self.buy_fee_amt or 0.0) if float(self.buy_fee_amt or 0.0) > 0 else float(self.buy_fee_usd or 0.0)
+            fee_amt = abs(float(self.buy_fee_amt or 0.0))
+            fee_usd = abs(float(self.buy_fee_usd or 0.0))
+            buy_fee_quote = fee_amt if fee_amt > 0 else fee_usd
 
         spent_total = float(self.buy_usd or 0.0) + float(buy_fee_quote or 0.0)
 
@@ -147,11 +149,13 @@ class Trade:
             realized_got = float(sold_usd)
             # fee in QUOTE
             if _fee_mode_is_quote(sold_fee_mode, sold_fee_ccy):
-                realized_got -= float(sold_fee_amt or 0.0) if float(sold_fee_amt or 0.0) > 0 else float(sold_fee_usd or 0.0)
+                fee_amt = abs(float(sold_fee_amt or 0.0))
+                fee_usd = abs(float(sold_fee_usd or 0.0))
+                realized_got -= fee_amt if fee_amt > 0 else fee_usd
             else:
                 # fee in BASE: оцениваем через среднюю цену продажи (если есть)
                 try:
-                    realized_got -= float(sold_fee_amt or 0.0) * float(getattr(self, 'sell_px', 0.0) or last_px or 0.0)
+                    realized_got -= abs(float(sold_fee_amt or 0.0)) * float(getattr(self, 'sell_px', 0.0) or last_px or 0.0)
                 except Exception:
                     pass
 
@@ -202,19 +206,22 @@ class Trade:
         # BUY cost
         buy_fee_quote = 0.0
         if _fee_mode_is_quote(self.buy_fee_mode, self.buy_fee_ccy):
-            buy_fee_quote = float(self.buy_fee_amt or 0.0) if float(self.buy_fee_amt or 0.0) > 0 else float(self.buy_fee_usd or 0.0)
+            fee_amt = abs(float(self.buy_fee_amt or 0.0))
+            fee_usd = abs(float(self.buy_fee_usd or 0.0))
+            buy_fee_quote = fee_amt if fee_amt > 0 else fee_usd
         spent_total = float(self.buy_usd or 0.0) + float(buy_fee_quote or 0.0)
 
         # SELL proceeds
         got_total = float(self.sell_usd or 0.0)
         # fee in QUOTE
         if _fee_mode_is_quote(self.sell_fee_mode, self.sell_fee_ccy):
-            sell_fee_quote = float(self.sell_fee_amt or 0.0) if float(self.sell_fee_amt or 0.0) > 0 else float(self.sell_fee_usd or 0.0)
-            got_total -= float(sell_fee_quote or 0.0)
+            fee_amt = abs(float(self.sell_fee_amt or 0.0))
+            fee_usd = abs(float(self.sell_fee_usd or 0.0))
+            got_total -= float(fee_amt if fee_amt > 0 else fee_usd)
         # fee in BASE (IMPORTANT)
         elif _fee_mode_is_base(self.sell_fee_mode, self.sell_fee_ccy):
             try:
-                got_total -= float(self.sell_fee_amt or 0.0) * float(self.sell_px or 0.0)
+                got_total -= abs(float(self.sell_fee_amt or 0.0)) * float(self.sell_px or 0.0)
             except Exception:
                 pass
 
@@ -1397,8 +1404,8 @@ class Portfolio:
                             sell_qty=float(sz_gross),
                             sell_fee_usd=float(fee_usd),
                             sell_fee_ccy=str(fee_ccy or ''),
-                            sell_fee_amt=float(getattr(tr, 'sell_fee_amt', 0.0) or (fee_amt or 0.0)),
-                            reason='Внешняя продажа (BUY не найден)',
+                            sell_fee_amt=float(fee_amt or 0.0),
+                            sell_reason='Внешняя продажа (BUY не найден)',
                         )
                         self.closed_trades.append(ot)
                         self._save_ledger_safe()
