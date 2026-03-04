@@ -6,6 +6,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from engine.version import APP_TITLE
+from engine.version import APP_VERSION
 
 ERRORS = []
 
@@ -25,6 +26,18 @@ def check_config(path: Path, label: str):
     v = str(data.get('version') or '').strip()
     if v != APP_TITLE:
         ERRORS.append(f"{label}: version mismatch. config={v!r} expected={APP_TITLE!r}")
+
+    app = data.get('app') if isinstance(data.get('app'), dict) else {}
+    app_name = str(app.get('name') or '').strip()
+    app_version = str(app.get('version') or '').strip()
+    top_app_version = str(data.get('app_version') or '').strip()
+
+    if app_name != APP_TITLE:
+        ERRORS.append(f"{label}: app.name mismatch. app.name={app_name!r} expected={APP_TITLE!r}")
+    if app_version != APP_VERSION:
+        ERRORS.append(f"{label}: app.version mismatch. app.version={app_version!r} expected={APP_VERSION!r}")
+    if top_app_version != APP_VERSION:
+        ERRORS.append(f"{label}: app_version mismatch. app_version={top_app_version!r} expected={APP_VERSION!r}")
 
 # 1) config.json
 check_config(ROOT/'data'/'config.json', 'data/config.json')

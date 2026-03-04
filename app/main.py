@@ -68,7 +68,7 @@ _install_crash_hook(APP_DIR)
 # создаём его с согласованными "боевыми" настройками, чтобы freshly-built EXE
 # всегда стартовал одинаково.
 DEFAULT_BOOT_CONFIG_JSON = r"""{
-  "version": "ATE 6PRO v3.1.4.0",
+  "version": "ATE 6PRO v3.2",
   "okx": {
     "api_key": "",
     "api_secret": "",
@@ -333,10 +333,10 @@ DEFAULT_BOOT_CONFIG_JSON = r"""{
     "decision_log_max_bytes": 52428800
   },
   "app": {
-    "name": "ATE 6PRO v3",
-    "version": "3"
+    "name": "ATE 6PRO v3.2",
+    "version": "3.2"
   },
-  "app_version": "3"
+  "app_version": "3.2"
 }"""
 
 
@@ -472,6 +472,10 @@ class App(tk.Tk):
 
         # Единый формат версий: всегда держим одинаково во всех местах.
         self.cfg["version"] = APP_TITLE
+        app_meta = self.cfg.setdefault("app", {})
+        app_meta["name"] = APP_TITLE
+        app_meta["version"] = APP_VERSION
+        self.cfg["app_version"] = APP_VERSION
 
         # если пользователь ставит новую версию в новую папку.
         try:
