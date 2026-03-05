@@ -1425,7 +1425,8 @@
     "no_progress_hold_sec": 720,
     "no_progress_min_peak_pp": 0.12,
     "no_progress_band_lo_pp": -0.08,
-    "no_progress_band_hi_pp": 0.08
+    "no_progress_band_hi_pp": 0.08,
+    "adaptive_spread_enabled": true
   },
   "symbols": {
     "list": [

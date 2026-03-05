@@ -138,6 +138,7 @@ DEFAULT_BOOT_CONFIG_JSON = r"""{
     "signal_ttl_sec": 3,
     "global_buy_throttle_sec": 4,
     "max_spread_buy_pct": 0.22,
+    "adaptive_spread_enabled": true,
     "max_lag_buy_sec": 1.5
   },
   "symbols": {
@@ -427,8 +428,8 @@ class App(tk.Tk):
         tcfg.setdefault("check_old_orders", False)
         tcfg.setdefault("check_old_orders_hours", 5)
         tcfg.setdefault("warmup_sec", 60)
-        tcfg.setdefault("v3_buy_score_min", 1.0)
-        tcfg.setdefault("v3_sell_score_min", 1.0)
+        tcfg.setdefault("v3_buy_score_min", 0.75)
+        tcfg.setdefault("v3_sell_score_min", 0.70)
         # Общий cooldown (для UI) — оставляем коротким. Реальные BUY/SELL cooldown регулируются отдельно.
         tcfg.setdefault("cooldown_sec", 10.0)
         tcfg.setdefault("order_size_mode", "fixed")  # fixed|percent
@@ -440,6 +441,7 @@ class App(tk.Tk):
         tcfg.setdefault("allow_exceed_max_positions", False)
         tcfg.setdefault("exceed_max_positions_score", 0.95)
         tcfg.setdefault("min_order_usd", 10.0)
+        tcfg.setdefault("adaptive_spread_enabled", True)
         # порог "пыли" (USD-эквивалент), остатки меньше него:
         # - не блокируют BUY в режиме "1 символ = 1 позиция",
         # - могут оставаться после SELL из-за округлений/минималок OKX.
@@ -453,9 +455,9 @@ class App(tk.Tk):
         lcfg = self.cfg.setdefault("logging", {})
         lcfg.setdefault("decision_log_enabled", True)
         # режим: "signals" (только BUY/SELL), "ticks" (все тики), "signals+ticks" (оба)
-        lcfg.setdefault("decision_log_mode", "signals+ticks")
+        lcfg.setdefault("decision_log_mode", "signals")
         # если включены ticks, пишем не чаще, чем раз в N секунд на символ
-        lcfg.setdefault("decision_log_tick_sec", 3.0)
+        lcfg.setdefault("decision_log_tick_sec", 15.0)
 
         # Шумовая зона (по умолчанию привязываем к порогам):
         # Шумовая зона синхронизирована с порогами (нижняя/верхняя границы для подсветки в UI).
@@ -1238,9 +1240,9 @@ class App(tk.Tk):
 
         self.warmup_sec.delete(0,"end"); self.warmup_sec.insert(0, str(tcfg.get("warmup_sec", 60)))
         # ВАЖНО: v3_buy_score_min / v3_sell_score_min не редактируются в UI.
-        # Они остаются фиксированными (1.0) и используются только для внутренних проверок.
-        tcfg["v3_buy_score_min"] = float(tcfg.get("v3_buy_score_min", 1.0) or 1.0)
-        tcfg["v3_sell_score_min"] = float(tcfg.get("v3_sell_score_min", 1.0) or 1.0)
+        # Они не редактируются в UI и берутся из конфига (рекомендуемые дефолты 0.75/0.70).
+        tcfg["v3_buy_score_min"] = float(tcfg.get("v3_buy_score_min", 0.75) or 0.75)
+        tcfg["v3_sell_score_min"] = float(tcfg.get("v3_sell_score_min", 0.70) or 0.70)
         self.allow_exceed_max_positions_var.set(bool(tcfg.get("allow_exceed_max_positions", False)))
         try:
             self.exceed_max_positions_score.delete(0, "end")
@@ -1318,8 +1320,8 @@ class App(tk.Tk):
             tcfg["warmup_sec"] = 60
         # ВАЖНО: именные пороги по монетам зашиты, UI не предлагает менять BUY/SELL пороги.
         # Эти значения фиксируем, чтобы при сохранении конфигурации они не "уплывали".
-        tcfg["v3_buy_score_min"] = 1.0
-        tcfg["v3_sell_score_min"] = 1.0
+        tcfg["v3_buy_score_min"] = float(tcfg.get("v3_buy_score_min", 0.75) or 0.75)
+        tcfg["v3_sell_score_min"] = float(tcfg.get("v3_sell_score_min", 0.70) or 0.70)
         tcfg["allow_exceed_max_positions"] = bool(self.allow_exceed_max_positions_var.get())
         try:
             tcfg["micro_profit_enabled"] = bool(self.micro_profit_var.get())
@@ -2008,8 +2010,8 @@ class App(tk.Tk):
             tcfg["check_old_orders_hours"] = 5
 
         # ВАЖНО: v3_buy_score_min / v3_sell_score_min не редактируются в UI.
-        tcfg["v3_buy_score_min"] = 1.0
-        tcfg["v3_sell_score_min"] = 1.0
+        tcfg["v3_buy_score_min"] = float(tcfg.get("v3_buy_score_min", 0.75) or 0.75)
+        tcfg["v3_sell_score_min"] = float(tcfg.get("v3_sell_score_min", 0.70) or 0.70)
 
         for key, default, cast in [
             ("warmup_sec", 60, int),

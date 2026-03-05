@@ -1377,6 +1377,27 @@ class SymbolChannel(threading.Thread):
                         except Exception:
                             max_spread = 0.25
     
+                        # Адаптивный потолок спреда для BUY: при волатильном рынке даём небольшой люфт,
+                        # но ограничиваем его сверху, чтобы не покупать в неликвиде.
+                        try:
+                            adaptive_on = bool(shared.get("adaptive_spread_enabled", True))
+                        except Exception:
+                            adaptive_on = True
+                        if hint == "BUY" and adaptive_on:
+                            try:
+                                atrp = float(metrics.get("atrp") or 0.0)  # ATR% за 14
+                            except Exception:
+                                atrp = 0.0
+                            try:
+                                volr = float(metrics.get("vol_ratio") or metrics.get("volr") or 0.0)
+                            except Exception:
+                                volr = 0.0
+                            spread_bonus = max(0.0, min(0.12, atrp * 0.06))
+                            if volr >= 1.25:
+                                spread_bonus += 0.02
+                            max_spread = min(max_spread * 1.8, max_spread + spread_bonus)
+    
+    
                         if hint == "BUY" and max_spread > 0 and spread_pct > max_spread:
                             # Исторически это отображалось как SPREAD, но пользователю важнее понимать,
                             # что это именно блок по ликвидности/спреду.
