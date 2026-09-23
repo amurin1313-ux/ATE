@@ -41,5 +41,5 @@ jobs:
             echo "No decision change"
           else
             git commit -m "ATE FX cloud decision [skip ate-fx-cloud]"
-            git push
+            git push origin HEAD:${GITHUB_REF_NAME}
           fi
