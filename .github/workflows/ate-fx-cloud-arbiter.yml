@@ -1,0 +1,45 @@
+name: ATE FX Cloud Arbiter
+
+on:
+  push:
+    paths:
+      - "ate_fx_cloud_exchange/request/latest_request.json"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ate-fx-cloud-arbiter
+  cancel-in-progress: true
+
+jobs:
+  arbitrate:
+    if: github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, '[direct-mirror]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Run portfolio arbiter
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ATE_FX_OPENAI_MODEL: ${{ vars.ATE_FX_OPENAI_MODEL || 'gpt-6-sol' }}
+          ATE_FX_REASONING_EFFORT: ${{ vars.ATE_FX_REASONING_EFFORT || 'high' }}
+          ATE_FX_MAX_SELECTED: ${{ vars.ATE_FX_MAX_SELECTED || '2' }}
+        run: python ate_fx_cloud/openai_runner.py
+      - name: Commit validated decision
+        run: |
+          git config user.name "ate-fx-cloud-bot"
+          git config user.email "ate-fx-cloud-bot@users.noreply.github.com"
+          git add ate_fx_cloud_exchange/decision/latest_decision.json
+          if git diff --cached --quiet; then
+            echo "No decision change"
+          else
+            git commit -m "ATE FX cloud decision [skip ate-fx-cloud]"
+            git push origin HEAD:${GITHUB_REF_NAME}
+          fi
