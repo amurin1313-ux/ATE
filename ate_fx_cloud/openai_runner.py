@@ -26,7 +26,7 @@ def call_openai(request_payload):
     key=os.environ.get("OPENAI_API_KEY","").strip()
     if not key: raise RuntimeError("OPENAI_API_KEY_MISSING")
     body={
-      "model":os.environ.get("ATE_FX_OPENAI_MODEL","gpt-5.6"),
+      "model":os.environ.get("ATE_FX_OPENAI_MODEL","gpt-6-sol"),
       "reasoning":{"effort":os.environ.get("ATE_FX_REASONING_EFFORT","high")},
       "input":[
         {"role":"system","content":[{"type":"input_text","text":SYSTEM_PROMPT}]},
