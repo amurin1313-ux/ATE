@@ -28,7 +28,7 @@ jobs:
       - name: Run portfolio arbiter
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          ATE_FX_OPENAI_MODEL: ${{ vars.ATE_FX_OPENAI_MODEL || 'gpt-5.6' }}
+          ATE_FX_OPENAI_MODEL: ${{ vars.ATE_FX_OPENAI_MODEL || 'gpt-6-sol' }}
           ATE_FX_REASONING_EFFORT: ${{ vars.ATE_FX_REASONING_EFFORT || 'high' }}
           ATE_FX_MAX_SELECTED: ${{ vars.ATE_FX_MAX_SELECTED || '2' }}
         run: python ate_fx_cloud/openai_runner.py
