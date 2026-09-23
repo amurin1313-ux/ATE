@@ -72,8 +72,10 @@ def validate_decision(decision: Any, request: dict[str,Any], max_selected: int=2
         if str(item.get("policy_id") or "")!=str(src.get("policy_id") or ""): return False,f"CANDIDATE_POLICY_MISMATCH:{key}",{}
         item=dict(item); item["source_signal_id"]=str(src.get("signal_id") or ""); item["source_features_hash"]=str(src.get("features_hash") or "")
         selected.append(item);seen.add(key)
-    slots=max(0,int((request.get("risk_envelope") or {}).get("available_position_slots") or 0))
-    cap=max(0,min(int(max_selected),slots if slots>0 else int(max_selected)))
+    envelope=request.get("risk_envelope") or {}
+    slots=max(0,int(envelope.get("available_position_slots") or 0))
+    max_positions=max(0,int(envelope.get("max_positions") or 0))
+    cap=max(0,min(int(max_selected),slots)) if max_positions>0 else max(0,int(max_selected))
     out=dict(decision);out["selected_entries"]=sorted(selected,key=lambda x:int(x.get("priority") or 99))[:cap]
     out["validated_utc"]=utc_now();out["validation_status"]="PASS";out["direct_trading_allowed"]=False;out["ate_fx_risk_gate_required"]=True
     out["decision_hash"]="sha256:"+stable_hash(out)
