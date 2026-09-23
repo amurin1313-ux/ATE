@@ -15,3 +15,6 @@
 Опциональные variables: `ATE_FX_OPENAI_MODEL=gpt-5.6`, `ATE_FX_REASONING_EFFORT=high`, `ATE_FX_MAX_SELECTED=2`.
 
 Этот relay не предназначен для тикового low-latency исполнения; для оперативного контура локальная программа поддерживает DIRECT_OPENAI.
+
+## Поведение локального клиента
+После одной публикации request локальный Cloud agent опрашивает matching decision примерно раз в 10 секунд без повторной публикации request. В режиме DIRECT_OPENAI + GitHub mirror коммиты помечаются `[direct-mirror]`, и workflow специально не делает второй OpenAI-вызов.
