@@ -1,0 +1,46 @@
+name: ATE FX Cloud Decision
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ate_fx_cloud/requests/latest.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ate-fx-cloud-decision
+  cancel-in-progress: true
+
+jobs:
+  decide:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Decide with OpenAI
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ATE_FX_OPENAI_MODEL: ${{ vars.ATE_FX_OPENAI_MODEL || 'gpt-6-sol' }}
+          ATE_FX_CLOUD_REQUEST_PATH: ate_fx_cloud/requests/latest.json
+          ATE_FX_CLOUD_DECISION_PATH: ate_fx_cloud/decisions/latest.json
+          ATE_FX_DECISION_TTL_SECONDS: '240'
+        run: python ate_fx_cloud/github_relay_worker.py
+      - name: Commit decision
+        run: |
+          git config user.name "ate-fx-cloud-bot"
+          git config user.email "ate-fx-cloud-bot@users.noreply.github.com"
+          git add ate_fx_cloud/decisions/latest.json
+          if git diff --cached --quiet; then
+            echo "No decision change"
+          else
+            git commit -m "ATE FX cloud decision"
+            git push
+          fi
