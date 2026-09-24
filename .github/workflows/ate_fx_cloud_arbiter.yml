@@ -1,0 +1,37 @@
+name: ATE FX Cloud Arbiter
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ate_fx_cloud/requests/latest.json'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: ate-fx-cloud-arbiter
+  cancel-in-progress: true
+jobs:
+  decide:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Ask OpenAI portfolio arbiter
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: gpt-5.6-sol
+          ATE_DECISION_TTL_SECONDS: '600'
+        run: python ate_fx_cloud/worker.py
+      - name: Commit decision
+        run: |
+          git config user.name "ATE FX Cloud Arbiter"
+          git config user.email "actions@users.noreply.github.com"
+          git add ate_fx_cloud/decisions/latest.json ate_fx_cloud/decisions/history/
+          git diff --cached --quiet && exit 0
+          git commit -m "ATE FX cloud decision"
+          git push
