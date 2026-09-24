@@ -1,0 +1,92 @@
+name: ATE FX Cloud Self-Test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Create safe synthetic request
+        run: |
+          cat > /tmp/atefx_cloud_selftest_request.json <<'JSON'
+          {
+            "schema_version": "ate_fx_cloud.portfolio_request.v1",
+            "created_utc": "2026-09-24T00:00:00Z",
+            "snapshot_hash": "SELFTEST_ONLY",
+            "source_release": "SELFTEST",
+            "transport": "GITHUB_RELAY_SELFTEST",
+            "portfolio": {
+              "account_mode": "DEMO_SELFTEST",
+              "currency": "RUB",
+              "open_positions_count": 0,
+              "max_positions": 0,
+              "positions": [],
+              "news_guard": {"mode": "SELFTEST"}
+            },
+            "candidates": [
+              {
+                "candidate_id": "SELFTEST_CANDIDATE",
+                "symbol": "TESTPAIRRFD",
+                "base_symbol": "TESTPA",
+                "action": "BUY",
+                "policy_ref": "SELFTEST",
+                "brain_ref": "SELFTEST",
+                "features_hash": "SELFTEST",
+                "input_snapshot_hash": "SELFTEST",
+                "calibrated_probability": 0.5,
+                "confidence": 0.5,
+                "raw_model_score": 0.0,
+                "tradable_score": 0.0,
+                "probability_threshold": 0.5,
+                "expected_net_ev": 0.0,
+                "portfolio_priority_score": 0.0,
+                "reason_summary": "Synthetic connectivity test only. Never executable.",
+                "positive_factors": [],
+                "negative_factors": ["SELFTEST_ONLY"],
+                "risk_contract": {}
+              }
+            ],
+            "market": [],
+            "safety": {
+              "direct_trading_allowed": false,
+              "cloud_may_only_select_existing_candidate_id": true,
+              "ate_fx_risk_engine_required_after_cloud_selection": true,
+              "account_identifiers_removed": true,
+              "broker_tickets_removed": true,
+              "local_paths_removed": true
+            },
+            "request_id": "ATEFX_CLOUD_SELFTEST_V1"
+          }
+          JSON
+      - name: Call OpenAI through the production relay worker
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ATE_FX_OPENAI_MODEL: ${{ vars.ATE_FX_OPENAI_MODEL || 'gpt-6-sol' }}
+          ATE_FX_CLOUD_REQUEST_PATH: /tmp/atefx_cloud_selftest_request.json
+          ATE_FX_CLOUD_DECISION_PATH: /tmp/atefx_cloud_selftest_decision.json
+          ATE_FX_DECISION_TTL_SECONDS: '60'
+        run: python ate_fx_cloud/github_relay_worker.py
+      - name: Validate decision contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('/tmp/atefx_cloud_selftest_decision.json')
+          d=json.loads(p.read_text(encoding='utf-8'))
+          assert d['schema_version']=='ate_fx_cloud.portfolio_decision.v1'
+          assert d['request_id']=='ATEFX_CLOUD_SELFTEST_V1'
+          assert d['verdict'] in {'SELECT','NO_TRADE','DEFER'}
+          assert d['selected']['candidate_id'] in {'SELFTEST_CANDIDATE','NONE'}
+          assert d['safety']['direct_trading_allowed'] is False
+          print('ATE FX CLOUD SELF-TEST: PASS')
+          print('model=',d.get('model'),'verdict=',d.get('verdict'),'selected=',d.get('selected',{}).get('candidate_id'))
+          PY
