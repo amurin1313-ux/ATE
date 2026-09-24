@@ -34,4 +34,8 @@ jobs:
           git add ate_fx_cloud/decisions/latest.json ate_fx_cloud/decisions/history/
           git diff --cached --quiet && exit 0
           git commit -m "ATE FX cloud decision"
-          git push
+          for attempt in 1 2 3; do
+            git pull --rebase origin main && git push && exit 0
+            sleep $((attempt * 2))
+          done
+          exit 1
